@@ -1,0 +1,39 @@
+body {
+  background-color: coral;
+}
+.grid_b {
+  border: 1px solid black;
+}
+.wrapper {
+  display: grid;
+  grid-template-columns: minmax(400px, auto) 1fr;
+  grid-template-rows: 70px 1fr;
+  grid-gap: 10px;
+  height: 100vh;
+  max-width: 1500px;
+  width: 100%;
+  margin: auto;
+  padding: 10px;
+}
+.wrapper .header_top {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  background-color: indianred;
+}
+.wrapper .header_top .logo img {
+  height: inherit;
+  width: 90px;
+}
+.wrapper .navigation {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  background-color: antiquewhite;
+  display: block;
+  height: 100%;
+}
+.wrapper .content {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  background-color: aquamarine;
+  display: block;
+}
