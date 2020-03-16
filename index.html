@@ -1,0 +1,353 @@
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="../css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../css/style_type.css">
+	<link rel="stylesheet" type="text/css" href="../css/style.css">
+	
+	 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="https://use.fontawesome.com/dff38904a8.js"></script>
+<script src="../js/index.js"></script>
+	<title></title>
+  <style>
+  .IseeYou {
+  height: 100px;
+  width: 100px
+    ;
+  background: #4ca75f;
+  display: block;
+  margin-bottom: 10px;
+}
+.wrapper{
+  position: relative;
+}
+#aHolder{
+  position: relative; 
+  z-index: 2;
+}
+#task{
+ display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(10,250px);
+    grid-gap:10px;
+  background-color: #C4CB7A;
+  /*display: none;*/
+}
+
+.twoLayer{
+  position: absolute;
+  z-index: 10;
+   left: 0;
+  top: 0;
+}
+.red_square{
+   height: 100px;
+  width: 100px
+    ;
+  background: #A55A48;
+  display: block;
+  margin-bottom: 10px;
+}
+.blue_square{
+  height: 100px;
+  width: 100px
+    ;
+  background: #4ca75f;
+  display: block;
+  margin-bottom: 10px;
+}
+body { 
+  background-color: #0060cc; 
+  text-align:  center
+     }
+
+main {
+  position: relative;
+  background: white;
+  height: 200px;
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  resize: both;
+  overflow: auto;
+}
+
+.logo {
+  margin: 20px 0 10px;
+  max-height: 60px;
+}
+  
+.titile {
+    margin: 20px 0 18px;
+    font-family: Roboto;
+    font-size: 26px;
+    color: white;
+}
+
+.text1 {
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: Roboto;
+    font-size: 16px;
+    text-align:  center;
+    color: white;
+    }
+
+.text2 {
+    position: relative;
+    letter-spacing: 1px;
+    font-weight: 800;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    font-family: Roboto;
+    font-size: 16px;
+    text-align:  center;
+    color: #0060cc;
+    }
+  
+button { 
+    margin: 30px 0 5px;
+    width: 80%;
+    font-family: Roboto;
+    font-size: 16px;
+    height: 42px;
+    border-radius: 8px;
+    font-weight: 800;
+    background: #0060cc;
+    color: white;
+}
+
+.titile2 {
+    font-family: Roboto;
+    font-size: 26px;
+    text-align:  center;
+    font-weight: 800;
+    color: #0060cc;
+}
+
+
+.countdown-title {
+    font-family: Roboto;
+    font-size: 26px;
+    text-align:  center;
+    font-weight: 800;
+    color: white;
+}
+ 
+.countdown {
+    font-family: Roboto;
+    font-size: 26px;
+    text-align:  center;
+    font-weight: 800;
+    color: white;
+}
+ 
+.countdown-number {
+  padding: 10px;
+  border-radius: 3px;
+  background: #808080;
+  display: inline-block;
+  
+}
+ 
+.countdown-time {
+  padding: 15px;
+  border-radius: 3px;
+  background: white;
+  display: inline-block;
+  color: #0060cc;
+}
+ 
+.countdown-text {
+  display: block;
+  padding-top: 5px;
+  font-size: 16px;
+}
+
+#example_1 
+{
+  display:block;
+}
+
+.myNewButton{
+  height: 70px;
+  width: 200px;
+  background-color: #387B48;
+  color:white;
+  cursor: pointer;
+
+}
+.add_to_cart_button{
+  margin-top: 50px;
+  height: 50px;
+  background-color: #BA9E9E;
+
+  cursor: pointer;
+}
+ .itemVolue{
+        position: relative;
+        width: 50px;
+        height: 13px;
+        background-color:#d1d6de ;
+        margin-left: 10px;
+        cursor: pointer;
+       
+       
+    }
+     .itemVolumeActive{
+            width: 25%;
+            height: 13px;
+            background-color: #5181b8; 
+        }
+#container{
+  height: 500px;
+  width: 100%;
+}
+
+</style>
+</head>
+
+
+ <body>
+<div class="cube">
+  <div class="picture">
+    
+  </div>
+ </div>
+
+
+<input class="authB" type="submit" value="Авторизироваться" id="bt1" name="bt1" />
+<input class="authAjax" type="submit" value="Авторизироваться AJAX" id="bt1" name="bt1" />
+
+ </body>
+
+
+
+// let obj = document.querySelectorAll('dir.a');
+// console.log(obj);
+// let carousel = document.querySelectorAll('div.a');
+// for(let li of carousel) {
+//     console.log(li);
+//     console.log("7878");
+    
+//     }
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+  document.querySelector('.authB').onclick = ()=>{
+    sendRec();
+  }
+   document.querySelector('.authAjax').onclick = ()=>{
+    sendRecAjax();
+  }
+  let sendRecAjax = ()=>{
+   Request();
+  }
+
+  let sendRec = ()=>{
+   axios({
+      method:'get',
+      url:getURL('users.get',{user_id:571537978,fields:'photo_100'}), 
+      responseType:'json',
+      accept: '*/*'
+     })
+  }
+  // let str ="/video/player/video/";
+  // let str_two = "/videos/albums/";
+  // let str_three ="s/sd";
+  // // /.*\/([^/]+)\/[^/]+/
+   let re=/([^/]+)\/[^/]/;
+  // let arr = str_two.match(re);
+ // Дана строка 'ahb acb aeb aeeb adcb axeb'. Напишите регулярку, которая найдет строки ahb, acb, aeb по шаблону:
+ //  буква 'a', любой символ, буква
+ let str = 'aaa aaa aaa';
+  // let reg =/(a+[a-z]+b)/g;  //1 leeson
+   let reg =/aaa/;  //2 leeson
+
+
+   // let arr = str.match(reg);
+   str = 'aaa';
+   // str = str.slice(1);
+   
+   reg=/([a-z]@mail\.ru)/g;
+   console.log(reg.test('mymail@mail.ru'));
+   // let result = str.test(reg);
+   // result = result.replace(reg_one,"/")
+   // let result = str.replace(/ab+a/g,'!');
+   console.log(str);
+   // console.log(result);
+// https://oauth.vk.com/authorize?client_id=7359726&display=page&scope=friends,status,photos&response_type=token&v=5.52
+// https://oauth.vk.com/blank.html#access_token=a700547879b4213d1a0ca74854d523634fff5acecafecac2e5918f0531df469001b8ecfa6c298c1a8d1f9&expires_in=86400&user_id=571537978
+// access_token=a700547879b4213d1a0ca74854d523634fff5acecafecac2e5918f0531df469001b8ecfa6c298c1a8d1f9
+let getURL=(method,params)=>{
+  const staticUrl = '//api.vk.com/method/';
+  const token = 'access_token=a700547879b4213d1a0ca74854d523634fff5acecafecac2e5918f0531df469001b8ecfa6c298c1a8d1f9';
+ 
+  return staticUrl + method + '?' + jQuery.param(params) +'&'+token + '&'+'v=5.52'
+
+}
+
+
+ 
+ let Request = (method = "",params = {})=>{
+    jQuery.ajax({
+      url:getURL('users.get',{user_id:571537978,fields:'photo_100'}),
+      method:'GET',
+      dataType:'JSONP',
+      success:(data)=>{
+        console.log(data)
+      }
+    })  
+ }
+ // Request();
+ 
+
+
+
+
+
+//   axios.get(getURL('users.get',{user_id:571537978,fields:'photo_100'})).then(resp => {
+
+//     console.log(resp.data);
+// });
+
+//  axios.get('http://webcode.me').then(resp => {
+
+//     console.log(resp.data);
+// });
+  // console.log(arr);
+//   var re = /яблоки/gi;
+//  str = 'Яблоки круглые и яблоки сочные.';
+// var newstr = str.replace(re, 'апельсины');
+// console.log(newstr); // апельсины круглые и апельсины сочные.
+</script>
+
+
+
+  
+<!-- <script>
+      jQuery(function(){
+        jQuery('#ajaxSend').click(()=>{
+          jQuery.ajax({
+            url:'testajax.php',            
+            type: 'POST',
+            data:{
+            action:'myform',
+            param1:1,
+            param2:2
+            },
+            beforeSend:(xhr)=>{
+              jQuery('#ajaxSend').text('...загрузка')
+            },
+            success : (data)=>{
+              console.log("data__  ");              
+              console.log(data);
+              jQuery('#ajaxSend').text('Забронировать');
+            }
+          });
+        });
+      })    
+    </script> -->
+
+
+
+</html>
